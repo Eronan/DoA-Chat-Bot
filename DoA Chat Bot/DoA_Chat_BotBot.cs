@@ -84,6 +84,19 @@ namespace DoA_Chat_Bot
                 // Save the new turn count into the conversation state.
                 await _accessors.ConversationState.SaveChangesAsync(turnContext);
 
+                //Add simple Rule-based System switch case
+                switch (turnContext.Activity.Text)
+                {
+                    case "Agreement Administration":
+                    case "Consultation and Dispute Resolution":
+                    case "Working Conditions":
+                    case "Leave":
+                    case "Redeployment reduction":
+                    case "Redeployment retrenchment":
+                    case "Yes":
+                    case "No":
+                        break;
+                }
                 // Echo back to the user whatever they typed.
                 var responseMessage = $"Turn {state.TurnCount}: You sent '{turnContext.Activity.Text}'\n";
                 await turnContext.SendActivityAsync(responseMessage);
