@@ -1,3 +1,3 @@
 nuget restore
-msbuild CoreBot.sln -p:DeployOnBuild=true -p:PublishProfile=doachatbot-Web-Deploy.pubxml -p:Password=2Y9TrXTztCren0Pig5LzdQkHuiz4NQGmslhKaNimRaMCS1HT0f5vstARhwjB
+msbuild CoreBot.sln -p:DeployOnBuild=true -p:PublishProfile=doachatbot-Web-Deploy.pubxml -p:Password=02sn7RYFySzq4unLw5tRWxjcWAj6rKpoj0o6dXTZxyKXRg8uYsGoyQJezCWx
 
