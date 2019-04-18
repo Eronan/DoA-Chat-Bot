@@ -10,6 +10,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
+using CoreBot;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -56,17 +57,19 @@ namespace Microsoft.BotBuilderSamples
         private async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             // Call LUIS and gather any potential booking details. (Note the TurnContext has the response to the prompt.)
-            var bookingDetails = stepContext.Result != null
+            var intentName = stepContext.Result != null
                     ?
                 await LuisHelper.ExecuteLuisQuery(_configuration, _logger, stepContext.Context, cancellationToken)
                     :
-                new BookingDetails();
+                IntentNames.None;
 
             // In this sample we only have a single Intent we are concerned with. However, typically a scneario
             // will have multiple different Intents each corresponding to starting a different child Dialog.
 
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
-            return await stepContext.BeginDialogAsync(nameof(BookingDialog), bookingDetails, cancellationToken);
+
+            //Create a Class from bookingDialog that return the message or something
+            return await stepContext.BeginDialogAsync(nameof(intentDialog), bookingDetails, cancellationToken); 
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
