@@ -25,6 +25,7 @@ namespace Microsoft.BotBuilderSamples
             _configuration = configuration;
             _logger = logger;
 
+            //Remove Initial Dialog: Alex
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(new BookingDialog());
             //EDIT THIS FOR STEPS
@@ -50,6 +51,7 @@ namespace Microsoft.BotBuilderSamples
             }
             else
             {
+                //Change Message: Alex
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("What can I help you with today?") }, cancellationToken);
             }
         }
@@ -68,12 +70,14 @@ namespace Microsoft.BotBuilderSamples
 
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
 
-            //Create a Class from bookingDialog that return the message or something
+            //Create a Class from bookingDialog that return the message or something: Chris
+            //Utilise Switch Case Statements
             return await stepContext.BeginDialogAsync(nameof(BookingDialog), new BookingDetails(), cancellationToken); 
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            //Edit this for Feedback: Ernest
             // If the child dialog ("BookingDialog") was cancelled or the user failed to confirm, the Result here will be null.
             if (stepContext.Result != null)
             {
