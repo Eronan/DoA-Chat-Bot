@@ -69,7 +69,7 @@ namespace Microsoft.BotBuilderSamples
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
 
             //Create a Class from bookingDialog that return the message or something
-            return await stepContext.BeginDialogAsync(nameof(intentDialog), bookingDetails, cancellationToken); 
+            return await stepContext.BeginDialogAsync(nameof(BookingDialog), new BookingDetails(), cancellationToken); 
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
