@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
+// EDIT THIS FOR DIALOG
 
 using System;
 using System.Threading;
@@ -25,6 +26,7 @@ namespace Microsoft.BotBuilderSamples
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(new BookingDialog());
+            //EDIT THIS FOR STEPS
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
