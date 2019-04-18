@@ -28,9 +28,9 @@ namespace Microsoft.BotBuilderSamples
                 // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    var welcomeCard = CreateAdaptiveCardAttachment();
-                    var response = CreateResponse(turnContext.Activity, welcomeCard);
-                    await turnContext.SendActivityAsync(response, cancellationToken);
+                    //var welcomeCard = CreateAdaptiveCardAttachment();
+                    //var response = CreateResponse(turnContext.Activity, welcomeCard);
+                    //await turnContext.SendActivityAsync(response, cancellationToken);
                 }
             }
         }
