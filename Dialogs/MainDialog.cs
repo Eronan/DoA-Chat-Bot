@@ -26,7 +26,8 @@ namespace Microsoft.BotBuilderSamples
             _logger = logger;
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
-            AddDialog(new BookingDialog());
+            //AddDialog(new BookingDialog());
+            AddDialog(new FeedbackDialog());
             //EDIT THIS FOR STEPS
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
@@ -69,7 +70,7 @@ namespace Microsoft.BotBuilderSamples
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
 
             //Create a Class from bookingDialog that return the message or something
-            return await stepContext.BeginDialogAsync(nameof(BookingDialog), new BookingDetails(), cancellationToken); 
+            return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), new FeedbackDetails(), cancellationToken);
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -77,8 +78,10 @@ namespace Microsoft.BotBuilderSamples
             // If the child dialog ("BookingDialog") was cancelled or the user failed to confirm, the Result here will be null.
             if (stepContext.Result != null)
             {
-                var result = (BookingDetails)stepContext.Result;
+                var result = (FeedbackDetails)stepContext.Result;
+                //Send Feedback Information somewhere
 
+                /*
                 // Now we have all the booking details call the booking service.
 
                 // If the call to the booking service was successful tell the user.
@@ -86,12 +89,10 @@ namespace Microsoft.BotBuilderSamples
                 var timeProperty = new TimexProperty(result.TravelDate);
                 var travelDateMsg = timeProperty.ToNaturalLanguage(DateTime.Now);
                 var msg = $"I have you booked to {result.Destination} from {result.Origin} on {travelDateMsg}";
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
+                */
             }
-            else
-            {
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text("Thank you."), cancellationToken);
-            }
+
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text("Thank you for using our bot."), cancellationToken);
             return await stepContext.EndDialogAsync();
         }
     }
