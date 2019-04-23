@@ -26,8 +26,11 @@ namespace Microsoft.BotBuilderSamples
             _logger = logger;
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
+
             //AddDialog(new BookingDialog());
             AddDialog(new FeedbackDialog());
+            AddDialog(new BookingDialog());
+
             //EDIT THIS FOR STEPS
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
@@ -64,13 +67,19 @@ namespace Microsoft.BotBuilderSamples
                     :
                 IntentNames.None;
 
-            // In this sample we only have a single Intent we are concerned with. However, typically a scneario
+            // In this sample we only have a single Intent we are concerned with. However, typically a scenario
             // will have multiple different Intents each corresponding to starting a different child Dialog.
 
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
 
+            //Run AnswerDialog to output correct intent answer
             //Create a Class from bookingDialog that return the message or something
-            return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), new FeedbackDetails(), cancellationToken);
+            return await stepContext.BeginDialogAsync(nameof(BookingDialog), cancellationToken);
+
+            //await stepContext.Context.SendActivityAsync(MessageFactory.Text("What other enquiries may i assist you with?"));
+            //return await stepContext.BeginDialogAsync(nameof(AnswerDialog), cancellationToken);
+
+            //return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), new FeedbackDetails(), cancellationToken);
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)

@@ -8,5 +8,8 @@ namespace Microsoft.BotBuilderSamples
         public string Destination { get; set; }
         public string Origin { get; set; }
         public string TravelDate { get; set; }
+
+        //Added a new one
+        public string Intent { get; set; }
     }
 }
