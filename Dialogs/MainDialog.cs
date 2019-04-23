@@ -10,7 +10,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
-using CoreBot;
+using CoreBot.IntentNames;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -68,6 +68,11 @@ namespace Microsoft.BotBuilderSamples
             // will have multiple different Intents each corresponding to starting a different child Dialog.
 
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
+            switch(intentName)
+            {
+                
+            }
+
 
             //Create a Class from bookingDialog that return the message or something
             return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), new FeedbackDetails(), cancellationToken);

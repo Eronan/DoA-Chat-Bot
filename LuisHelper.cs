@@ -9,7 +9,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using CoreBot;
+using CoreBot.IntentNames;
 
 namespace Microsoft.BotBuilderSamples
 {
