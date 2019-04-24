@@ -30,12 +30,14 @@ namespace Microsoft.BotBuilderSamples
             //AddDialog(new BookingDialog());
             AddDialog(new FeedbackDialog());
             AddDialog(new BookingDialog());
+            AddDialog(new AnswerDialogs());
 
             //EDIT THIS FOR STEPS
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
                 ActStepAsync,
+                FeedbackFunc,
                 FinalStepAsync,
             }));
 
@@ -73,13 +75,17 @@ namespace Microsoft.BotBuilderSamples
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
 
             //Run AnswerDialog to output correct intent answer
-            //Create a Class from bookingDialog that return the message or something
-            return await stepContext.BeginDialogAsync(nameof(BookingDialog), cancellationToken);
-
-            //await stepContext.Context.SendActivityAsync(MessageFactory.Text("What other enquiries may i assist you with?"));
-            //return await stepContext.BeginDialogAsync(nameof(AnswerDialog), cancellationToken);
+            //Create a Class from AnswerDialogs that return the message or something
+            return await stepContext.BeginDialogAsync(nameof(AnswerDialogs), cancellationToken);
 
             //return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), new FeedbackDetails(), cancellationToken);
+        }
+
+        private async Task<DialogTurnResult> FeedbackFunc(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            // If the child dialog ("BookingDialog") was cancelled or the user failed to confirm, the Result here will be null.
+            return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), cancellationToken);
+
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)

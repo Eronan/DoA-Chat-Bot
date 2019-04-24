@@ -2,16 +2,22 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using CoreBot;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 
 namespace Microsoft.BotBuilderSamples
 {
-    public class AnswerDialog : CancelAndHelpDialog
+    public class AnswerDialogs : CancelAndHelpDialog
     {
-        public AnswerDialog()
-            : base(nameof(AnswerDialog))
+        protected readonly IConfiguration _configuration;
+        protected readonly ILogger _logger;
+
+        public AnswerDialogs()
+            : base(nameof(AnswerDialogs))
         {
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new TextPrompt(nameof(TextPrompt)));
@@ -19,13 +25,24 @@ namespace Microsoft.BotBuilderSamples
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 FindIntent,
-                MoreQuery
+                MoreQuery,
+                DecisionForMore
             }));
+
+            // The initial child Dialog to run.
+            InitialDialogId = nameof(WaterfallDialog);
+        }
 
             private async Task<DialogTurnResult> FindIntent(WaterfallStepContext stepContext, CancellationToken cancellationToken)
             {
-                var msg = $"Message display for this intent";
-                var WhatIntent = LuisHelper.intent;
+            var intentName = stepContext.Result != null
+                    ?
+                await LuisHelper.ExecuteLuisQuery(_configuration, _logger, stepContext.Context, cancellationToken)
+                    :
+                IntentNames.None;
+
+            var msg = $"Cannot find intent ERROR"; 
+                var WhatIntent = intentName;
                 //Identify first query
                 switch (WhatIntent)
                 {
@@ -166,26 +183,29 @@ namespace Microsoft.BotBuilderSamples
             {
                 //Ask if there are any more enquries for the user
                 string msg = $"Can i help you with any more enquries?";
-                //return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
-
-                return await stepContext.PromptAsync(nameof(ChoicePrompt), new PromptOptions { Prompt = MessageFactory.Text("Yes", "No") }, cancellationToken);
-            }
-
-            private async Task<DialogTurnResult> DecisionForMore(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-            {
-                var feedbackDetails = (FeedbackDetails)stepContext.Options;
-
-                //Save the result from ConfirmStepAsync
-                feedbackDetails.Solved = (bool)stepContext.Result;
-
-                if (!feedbackDetails.Solved) {
-                    string msg = $"Can i help you with any more enquries?";
                 return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
-                    }
+
+            //return await stepContext.PromptAsync(nameof(ChoicePrompt), new PromptOptions { Prompt = MessageFactory.Text("Yes", "No") }, cancellationToken);
             }
 
-            // The initial child Dialog to run.
-            InitialDialogId = nameof(WaterfallDialog);
+        private async Task<DialogTurnResult> DecisionForMore(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            var feedbackDetails = (FeedbackDetails)stepContext.Options;
+
+            //Save the result from ConfirmStepAsync
+            feedbackDetails.Solved = (bool)stepContext.Result;
+
+            if (!feedbackDetails.Solved)
+            {
+                string msg = $"Can i help you with any more enquries?";
+                return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
+            }
+            else
+            {
+                string msg = $"Thankyou for using DoA Services";
+                return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
+            }
+        }
         }
     }
-}
+
