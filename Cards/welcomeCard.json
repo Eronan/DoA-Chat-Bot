@@ -8,7 +8,15 @@
       "spacing": "medium",
       "size": "default",
       "weight": "bolder",
-      "text": "Welcome to the DoA Chatbot! Can I help you with anything?",
+      "text": "Welcome to the DoA Chatbot!",
+      "wrap": true,
+      "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": "yes",
+      "text": "How can I help you?",
       "wrap": true,
       "maxLines": 0
     }
