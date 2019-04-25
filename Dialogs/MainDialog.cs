@@ -68,12 +68,142 @@ namespace Microsoft.BotBuilderSamples
             // will have multiple different Intents each corresponding to starting a different child Dialog.
 
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
-            switch(intentName)
+            var msg = $"Cannot find intent ERROR";
+            var WhatIntent = intentName;
+            //Identify first query
+            switch (WhatIntent)
             {
-                
+                case IntentNames.Application:
+                    msg = $"Application is detected";
+                    break;
+                case IntentNames.COF:
+                    msg = $"Cash out Flex is detected";
+                    break;
+                case IntentNames.CaD:
+                    msg = $"Contesting a Decision is detected";
+                    break;
+                case IntentNames.Documentation:
+                    msg = $"Documentation is detected";
+                    break;
+                case IntentNames.Eligibility:
+                    msg = $"Eligibility is detected";
+                    break;
+                case IntentNames.ExecFlex:
+                    msg = $"Executive Flex is detected";
+                    break;
+                case IntentNames.ExecLevel:
+                    msg = $"Executive Level is detected";
+                    break;
+                case IntentNames.ExtensionRequests:
+                    msg = $"Extension Requests is detected";
+                    break;
+                case IntentNames.FamilyFriends:
+                    msg = $"Family & Friends is detected";
+                    break;
+                case IntentNames.FieldAllowance:
+                    msg = $"Field Allowance is detected";
+                    break;
+                case IntentNames.FieldWork:
+                    msg = $"Field Work is detected";
+                    break;
+                case IntentNames.FlexLeaveCredit:
+                    msg = $"Flex Leave Credit is detected";
+                    break;
+                case IntentNames.FlexTimeAccess:
+                    msg = $"Flex-Time Access is detected";
+                    break;
+                case IntentNames.Flexable:
+                    msg = $"FlexABLE is detected";
+                    break;
+                case IntentNames.FBT:
+                    msg = $"Fringe Benefits Tax (FBT) is detected";
+                    break;
+                case IntentNames.IrregularCases:
+                    msg = $"Irregular Cases is detected";
+                    break;
+                case IntentNames.Leave:
+                    msg = $"Leave is detected";
+                    break;
+                case IntentNames.LeavingDepartment:
+                    msg = $"Leaving The Department is detected";
+                    break;
+                case IntentNames.LengthRequirements:
+                    msg = $"Leaving/Requirements is detected";
+                    break;
+                case IntentNames.MaximumHours:
+                    msg = $"Maximum Hours is detected";
+                    break;
+                case IntentNames.NoFlextimeAccess:
+                    msg = $"No Flex-Time Access is detected";
+                    break;
+                case IntentNames.NonListedActivitiesEquipment:
+                    msg = $"Non-listed Activities/Equipment is detected";
+                    break;
+                case IntentNames.None:
+                    msg = $"None is detected";
+                    break;
+                case IntentNames.Overtime:
+                    msg = $"Overtime is detected";
+                    break;
+                case IntentNames.OvertimePartTime:
+                    msg = $"Overtime_PartTime is detected";
+                    break;
+                case IntentNames.OwingFlex:
+                    msg = $"Owing Flex is detected";
+                    break;
+                case IntentNames.PartTimeEmployee:
+                    msg = $"Part-Time Employee is detected";
+                    break;
+                case IntentNames.PerformanceManagement:
+                    msg = $"Performance Management is detected";
+                    break;
+                case IntentNames.PrePurchasedEquipment:
+                    msg = $"Pre-Purchased Equipment is detected";
+                    break;
+                case IntentNames.PurchaseEquipmentOnLeave:
+                    msg = $"Purchase Equipment on Leave is detected";
+                    break;
+                case IntentNames.RDO:
+                    msg = $"RDO is detected";
+                    break;
+                case IntentNames.Records:
+                    msg = $"Records is detected";
+                    break;
+                case IntentNames.RecreationLeaveFlexTime:
+                    msg = $"Recreation Leave Flex-Time is detected";
+                    break;
+                case IntentNames.RegularityRequirements:
+                    msg = $"Regularity Requirements is detected";
+                    break;
+                case IntentNames.Response:
+                    msg = $"Response is detected";
+                    break;
+                case IntentNames.RestRelief:
+                    msg = $"Rest Relief is detected";
+                    break;
+                case IntentNames.RevertingToFullTime:
+                    msg = $"Reverting to Full-Time is detected";
+                    break;
+                case IntentNames.SesEmployees:
+                    msg = $"SES Employees is detected";
+                    break;
+                case IntentNames.SettlementPeriod:
+                    msg = $"Settlement Period is detected";
+                    break;
+                case IntentNames.TaxReceiptInvoice:
+                    msg = $"Tax Receipt/Invoice is detected";
+                    break;
+                case IntentNames.Transfer:
+                    msg = $"Transfer is detected";
+                    break;
+                case IntentNames.TravelAllowance:
+                    msg = $"Travel Allowance is detected";
+                    break;
+                case IntentNames.WorkHours:
+                    msg = $"Work Hours is detected";
+                    break;
             }
-
-
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
             //Create a Class from bookingDialog that return the message or something
             return await stepContext.BeginDialogAsync(nameof(FeedbackDialog), new FeedbackDetails(), cancellationToken);
         }
