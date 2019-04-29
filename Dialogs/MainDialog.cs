@@ -69,9 +69,8 @@ namespace Microsoft.BotBuilderSamples
 
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
             var msg = $"Cannot find intent ERROR";
-            var WhatIntent = intentName;
             //Identify first query
-            switch (WhatIntent)
+            switch (intentName)
             {
                 case IntentNames.Application:
                     msg = $"You must complete and submit the wharf allowance application form. It is your responsibility to apply for wharf allowance if you believe you are entitled to it. " +
@@ -95,8 +94,8 @@ namespace Microsoft.BotBuilderSamples
                     msg = $"Although you are based in the port environment, administrative dutires are not considered eligible activities.";
                     break;
                 case IntentNames.ExecFlex:
-                    msg = $"Flex - time provisions do not apply to executive level classified employees. As an executive level employee your remuneration level compensates you for any reasonable additional hours that may be worked." +
-                        $"You may have access to time off in lieu(TOIL) to recognise any additional hours worked that are considered to exceed these reasonable additional hours(clause 25 of the EA).TOIL must be agreed to with your manager and is not hour for hour like flex - time." +
+                    msg = $"Flex - time provisions do not apply to executive level classified employees. As an executive level employee your remuneration level compensates you for any reasonable additional hours that may be worked. " +
+                        $"You may have access to time off in lieu(TOIL) to recognise any additional hours worked that are considered to exceed these reasonable additional hours(clause 25 of the EA).TOIL must be agreed to with your manager and is not hour for hour like flex - time. " +
                         $"You may work flexibly by designing your daily attendance patterns, including absences, with the agreement of your manager.A regular pattern of work that extends beyond a four week period should be recorded through a formal FlexABLE arrangement(e.g.nine day fortnight).";
                     break;
                 case IntentNames.ExecLevel:
@@ -124,9 +123,9 @@ namespace Microsoft.BotBuilderSamples
                         $"With the agreement of your manager you may nominate up to two days flex-leave to be taken in a settlement period in accordance with clause 20.9 of the EA.";
                     break;
                 case IntentNames.FlexTimeAccess:
-                    msg = $"Subject to the exclusions listed below, all other full-time and part-time APS level 1 - 6 employees are eligible to participate in flex - time arrangements.Where you have been directed to work ordinary hours, your standard hours will be:" +
-                        $"-8.30am to 5.00pm Monday to Friday with one hour for lunch(for Canberra based full - time employees)." +
-                        $"- 7.30am to 3.30 pm Monday to Friday with thirty minutes for lunch(for regionally based full - time employees." +
+                    msg = $"Subject to the exclusions listed below, all other full-time and part-time APS level 1 - 6 employees are eligible to participate in flex - time arrangements.Where you have been directed to work ordinary hours, your standard hours will be:\n" +
+                        $"-8.30am to 5.00pm Monday to Friday with one hour for lunch(for Canberra based full - time employees).\n" +
+                        $"- 7.30am to 3.30 pm Monday to Friday with thirty minutes for lunch(for regionally based full - time employees.\n" +
                         $"- your agreed ordinary hours if you are part-time unless otherwise agreed to in writing between you and your manager.";
                     break;
                 case IntentNames.Flexable:
@@ -141,9 +140,9 @@ namespace Microsoft.BotBuilderSamples
                         $"A reportable fringe benefit does not impact on personal income tax, but is taken into account for the Medicare levy and Centrelink calculated payments.";
                     break;
                 case IntentNames.IrregularCases:
-                    msg = $"To be eligible for wharf allowance you must satisfy each of the following criteria:" +
-                        $"1.The depot is located within a port environment" +
-                        $"2.The depot is your place of work for a continuous minimum period of a whole fortnight" +
+                    msg = $"To be eligible for wharf allowance you must satisfy each of the following criteria:\n" +
+                        $"1.The depot is located within a port environment\n" +
+                        $"2.The depot is your place of work for a continuous minimum period of a whole fortnight\n" +
                         $"3.You perform an eligible activity at the depot at least once in that fortnight.";
                     break;
                 case IntentNames.Leave:
