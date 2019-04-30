@@ -95,9 +95,9 @@ namespace Microsoft.BotBuilderSamples
                     msg = $"Although you are based in the port environment, administrative dutires are not considered eligible activities.";
                     break;
                 case IntentNames.ExecFlex:
-                    msg = $"Flex - time provisions do not apply to executive level classified employees. As an executive level employee your remuneration level compensates you for any reasonable additional hours that may be worked." +
-                        $"You may have access to time off in lieu(TOIL) to recognise any additional hours worked that are considered to exceed these reasonable additional hours(clause 25 of the EA).TOIL must be agreed to with your manager and is not hour for hour like flex - time." +
-                        $"You may work flexibly by designing your daily attendance patterns, including absences, with the agreement of your manager.A regular pattern of work that extends beyond a four week period should be recorded through a formal FlexABLE arrangement(e.g.nine day fortnight).";
+                    msg = $"Flex - time provisions do not apply to executive level classified employees. As an executive level employee your remuneration level compensates you for any reasonable additional hours that may be worked. \n" +
+                        $"\n You may have access to time off in lieu(TOIL) to recognise any additional hours worked that are considered to exceed these reasonable additional hours(clause 25 of the EA).TOIL must be agreed to with your manager and is not hour for hour like flex - time. \n" +
+                        $"\n You may work flexibly by designing your daily attendance patterns, including absences, with the agreement of your manager.A regular pattern of work that extends beyond a four week period should be recorded through a formal FlexABLE arrangement(e.g.nine day fortnight).";
                     break;
                 case IntentNames.ExecLevel:
                     msg = $"In accordance with the provisions of clause 22.2 (a) of the EA, unless the secretary otherwise approves, you are not eligible to receive overtime payments (unless you are working overtime in the field). " +
@@ -120,19 +120,19 @@ namespace Microsoft.BotBuilderSamples
                         $"As a general rule, preparation and packing for field activities, as well as the completion of field work (such as storage of specimens and cleaning of equipment) should be conducted in normal hours, wherever possible.";
                     break;
                 case IntentNames.FlexLeaveCredit:
-                    msg = $"Flex - leave is subject to manager approval(ideally by email). Managers will need to consider your needs as well as the operational requirements of the work area in approving flex-leave." +
-                        $"With the agreement of your manager you may nominate up to two days flex-leave to be taken in a settlement period in accordance with clause 20.9 of the EA.";
+                    msg = $"Flex - leave is subject to manager approval(ideally by email). Managers will need to consider your needs as well as the operational requirements of the work area in approving flex-leave. \n" +
+                        $"\n With the agreement of your manager you may nominate up to two days flex-leave to be taken in a settlement period in accordance with clause 20.9 of the EA.";
                     break;
                 case IntentNames.FlexTimeAccess:
-                    msg = $"Subject to the exclusions listed below, all other full-time and part-time APS level 1 - 6 employees are eligible to participate in flex - time arrangements.Where you have been directed to work ordinary hours, your standard hours will be:" +
-                        $"-8.30am to 5.00pm Monday to Friday with one hour for lunch(for Canberra based full - time employees)." +
-                        $"- 7.30am to 3.30 pm Monday to Friday with thirty minutes for lunch(for regionally based full - time employees." +
-                        $"- your agreed ordinary hours if you are part-time unless otherwise agreed to in writing between you and your manager.";
+                    msg = $"Subject to the exclusions listed below, all other full-time and part-time APS level 1 - 6 employees are eligible to participate in flex - time arrangements.Where you have been directed to work ordinary hours, your standard hours will be: \n" +
+                        $"\n - 8.30am to 5.00pm Monday to Friday with one hour for lunch(for Canberra based full - time employees). \n" +
+                        $"\n - 7.30am to 3.30 pm Monday to Friday with thirty minutes for lunch(for regionally based full - time employees. \n" +
+                        $"\n - your agreed ordinary hours if you are part-time unless otherwise agreed to in writing between you and your manager.";
                     break;
                 case IntentNames.Flexable:
                     msg = $"Flexible work arrangements can take a variety of forms which include changes to standard hours, patterns and locations of work.FlexABLE encourages employees and managers to explore and implement what suits best including multiple flexible working arrangements from the available options." +
-                        $"Formal arrangements are used for regular patterns of work that extend beyond a four week period.Informal arrangements are appropriate for periods of four weeks or less." +
-                        $"With the agreement of your manager you may arrange a regular flex - time pattern(e.g.every second Monday is taken as flex - time), this would form a regular pattern of work that extends beyond a four week period and therefore should be a formal FlexABLE arrangement." +
+                        $"Formal arrangements are used for regular patterns of work that extend beyond a four week period.Informal arrangements are appropriate for periods of four weeks or less. \n" +
+                        $"\n With the agreement of your manager you may arrange a regular flex - time pattern(e.g.every second Monday is taken as flex - time), this would form a regular pattern of work that extends beyond a four week period and therefore should be a formal FlexABLE arrangement." +
                         $"If there is a day that you do not work(as agreed in your formal FlexABLE arrangement) and that day falls on a public holiday, you cannot substitute that day for another day to compensate for the missed public holiday.";
                     break;
                 case IntentNames.FBT:
@@ -141,35 +141,36 @@ namespace Microsoft.BotBuilderSamples
                         $"A reportable fringe benefit does not impact on personal income tax, but is taken into account for the Medicare levy and Centrelink calculated payments.";
                     break;
                 case IntentNames.IrregularCases:
-                    msg = $"To be eligible for wharf allowance you must satisfy each of the following criteria:" +
-                        $"1.The depot is located within a port environment" +
-                        $"2.The depot is your place of work for a continuous minimum period of a whole fortnight" +
-                        $"3.You perform an eligible activity at the depot at least once in that fortnight.";
+                    msg = $"To be eligible for wharf allowance you must satisfy each of the following criteria: \n" +
+                        $"\n 1.The depot is located within a port environment \n" +
+                        $"\n 2.The depot is your place of work for a continuous minimum period of a whole fortnight \n" +
+                        $"\n 3.You perform an eligible activity at the depot at least once in that fortnight.";
                     break;
                 case IntentNames.Leave:
-                    msg = $"If you are based in a port environment for a continuous minimum period of a whole fortnight and perform eligible activities for a part of a pay period within the fortnight, you are eligible to receive wharf allowance for that pay period." +
-                        $"Where your leave covers a full pay period, and you therefore do not perform an eligible activity within that fortnight, you are not eligible to receive wharf allowance over the leave period." +
+                    msg = $"If you are based in a port environment for a continuous minimum period of a whole fortnight and perform eligible activities for a part of a pay period within the fortnight, you are eligible to receive wharf allowance for that pay period. \n" +
+                        "\n Where your leave covers a full pay period, and you therefore do not perform an eligible activity within that fortnight, you are not eligible to receive wharf allowance over the leave period." +
                         $"Any variations to your eligibility must be amended by completing and submitting a wharf allowance application form.";
                     break;
                 case IntentNames.LeavingDepartment:
                     msg = $"It is the responsibility of both you and your manager to ensure that a nil balance is reached prior to your departure from the department. " +
-                        $"Flex credits will not be paid out on leaving the department. Flex debits may be recovered in accordance with clause 39 of the EA. " +
-                        $"If you are talking about money reimbursements/claims while leaving the department: " +
+                        $"Flex credits will not be paid out on leaving the department. Flex debits may be recovered in accordance with clause 39 of the EA. \n" +
+                        $"\n If you are talking about money reimbursements/claims while leaving the department: " +
                         $"You must be an ongoing employee of the department on 1 April to make a claim. For example, " +
                         $"if you purchased a gym membership for $600 in November and then transfer to another department the following March, you will not be eligible for the reimbursement as you were not an ongoing employee of the department on 1 April of that year.";
                     break;
                 case IntentNames.LengthRequirements:
-                    msg = $"The period of any approved PTWA will be dependent on a variety of factors, including the operational requirements of the department, your personal needs, work/ program location, seasonal work implications and demands that might affect start and finish times or workloads." +
-                        $"All PTWAs must specify a start date and review dates so that the arrangement can be reviewed to determine whether or not it should continue. In most circumstances, an application for a PTWA would not exceed 12 months and, as a minimum, all PTWAs must be reviewed within one month of commencement and then every 12 months.While there is no set limit to the amount of consecutive PTWAs you can participate in, the PTWA may be varied with agreement between you, your manager and the delegate.The PTWA may also be reviewed where changes to operational requirements significantly affect the operation of the PTWA." +
-                        $"Once a PTWA lapses, no change will be made to your working hours(or fortnightly salary) in Aurion until a new PTWA is completed using the Flexible Working Arrangement -proposal and agreement form to indicate either a new PTWA or a reversion to your full-time arrangement.";
+                    msg = $"The period of any approved PTWA will be dependent on a variety of factors, including the operational requirements of the department, your personal needs, work/ program location, seasonal work implications and demands that might affect start and finish times or workloads. \n" +
+                        $"\n All PTWAs must specify a start date and review dates so that the arrangement can be reviewed to determine whether or not it should continue. In most circumstances, " +
+                        $"an application for a PTWA would not exceed 12 months and, as a minimum, all PTWAs must be reviewed within one month of commencement and then every 12 months.While there is no set limit to the amount of consecutive PTWAs you can participate in, the PTWA may be varied with agreement between you, your manager and the delegate.The PTWA may also be reviewed where changes to operational requirements significantly affect the operation of the PTWA. \n" +
+                        $"\n Once a PTWA lapses, no change will be made to your working hours(or fortnightly salary) in Aurion until a new PTWA is completed using the Flexible Working Arrangement -proposal and agreement form to indicate either a new PTWA or a reversion to your full-time arrangement.";
                     break;
                 case IntentNames.MinimumHours:
                     msg = $"Ordinary hours of work for part-time employees, unless otherwise agreed to with your team leader/manager, will be continuous (i.e. worked in a single block) and must be no less than three hours per day on any day worked. " +
                         $"An unpaid meal break will not be regarded as breaking continuity of hours worked.";
                     break;
                 case IntentNames.NoFlextimeAccess:
-                    msg = $"On - plant veterinarians, executive level employees, meat inspectors, casual employees and shift workers do not have access to flex-time." +
-                        $"The secretary may also determine your role or workplace is not conducive to flex-time arrangements(clause 20.13 and 20.14 of the EA).";
+                    msg = $"On - plant veterinarians, executive level employees, meat inspectors, casual employees and shift workers do not have access to flex-time. \n" +
+                        $"\n The secretary may also determine your role or workplace is not conducive to flex-time arrangements(clause 20.13 and 20.14 of the EA).";
                     break;
                 case IntentNames.NonListedActivitiesEquipment:
                     msg = $"If you are unsure about the eligibility of a particular activity or piece of equipment, seek advice from your manager before contacting the People Help team.";
@@ -206,10 +207,10 @@ namespace Microsoft.BotBuilderSamples
                     msg = $"If you are based in a port environment for a continuous minimum period of a whole fortnight and perform an eligible activity within the fortnight, you are eligible to receive wharf allowance.";
                     break;
                 case IntentNames.Records:
-                    msg = $"It is essential you keep accurate and current attendance records. An electronic form for recording flex-time within the department has been developed for full - time and part - time employees and is available on mylink." +
-                        $"If you are a part - time employee you are required to enter your hours of attendance on the part - time hours worksheet as this will form your pattern of attendance." +
-                        $"Leave taken should be recorded as an abbreviation of the type of leave taken, for example PERSL (personal leave) / REC(recreation leave) / FLEX(flex leave) / PH(public holiday) CC(Christmas closedown)." +
-                        $"An electronic or paper record should be kept and retained by you for a period of seven years before being destroyed.This complies with the archives disposal requirements. If you are leaving the department you should give an electronic or paper record of all your attendance records to your current manager.The records should be kept and retained by your manager for a period of seven years before being deleted or destroyed.";
+                    msg = $"It is essential you keep accurate and current attendance records. An electronic form for recording flex-time within the department has been developed for full - time and part - time employees and is available on mylink. \n" +
+                        $"\n If you are a part - time employee you are required to enter your hours of attendance on the part - time hours worksheet as this will form your pattern of attendance. \n" +
+                        $"\n Leave taken should be recorded as an abbreviation of the type of leave taken, for example PERSL (personal leave) / REC(recreation leave) / FLEX(flex leave) / PH(public holiday) CC(Christmas closedown). \n" +
+                        $"\n An electronic or paper record should be kept and retained by you for a period of seven years before being destroyed.This complies with the archives disposal requirements. If you are leaving the department you should give an electronic or paper record of all your attendance records to your current manager.The records should be kept and retained by your manager for a period of seven years before being deleted or destroyed.";
                     break;
                 case IntentNames.RecreationLeaveFlexTime:
                     msg = $"Where your manager has given approval for you to take a period of leave and you have a flex-time credit available, you may use your credit in conjunction with your recreation leave.";
@@ -232,8 +233,9 @@ namespace Microsoft.BotBuilderSamples
                     msg = $"SES employees are not covered by the enterprise agreements in terms of receiving a health and fitness reimbursement ";
                     break;
                 case IntentNames.SettlementPeriod:
-                    msg = $"The maximum credit that you can normally carry over from one settlement period to the next is 37.5 hours.You may carry over a credit in excess of 37.5 hours(or equivalent pro rata credit if you are a part - time employee) where it has been accrued due to work commitments with the prior agreement of your manager and approved by a manager with the appropriate delegation." +
-                        $"Managers with the appropriate delegation may also determine, in consultation with an employee, in what exceptional circumstances large flex credits, in excess of 37.5 hours(or equivalent pro rata credit if you are a part - time employee) may be retained for later use or cashed out at ordinary time rates.";
+                    msg = $"The maximum credit that you can normally carry over from one settlement period to the next is 37.5 hours.You may carry over a credit in excess of 37.5 hours(or equivalent pro rata credit if you are a part - time employee) " +
+                        $"where it has been accrued due to work commitments with the prior agreement of your manager and approved by a manager with the appropriate delegation. \n" +
+                        $"\n Managers with the appropriate delegation may also determine, in consultation with an employee, in what exceptional circumstances large flex credits, in excess of 37.5 hours(or equivalent pro rata credit if you are a part - time employee) may be retained for later use or cashed out at ordinary time rates.";
                      break;
                 case IntentNames.TaxReceiptInvoice:
                     msg = $"If you have purchased eligible activities and equipment from an overseas supplier and the tax invoice/receipt is in a foreign currency you will need to convert the amount to Australian dollars on your reimbursement claim form. You can do this by accessing a currency converter via the internet (all banking websites have one). " +
