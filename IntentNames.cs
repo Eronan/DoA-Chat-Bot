@@ -26,7 +26,7 @@ namespace CoreBot.IntentNames
         public const string IrregularCases = "Irregular Cases";
         public const string Leave = "Leave";
         public const string LeavingDepartment = "Leaving The Department";
-        public const string LengthRequirements = "Leaving/Requirements";
+        public const string LengthRequirements = "Length/Requirements";
         public const string MinimumHours = "Minimum Hours";
         public const string NoFlextimeAccess = "No Flex-Time Access";
         public const string NonListedActivitiesEquipment = "Non-listed Activities/Equipment";

@@ -70,7 +70,7 @@ namespace Microsoft.BotBuilderSamples
             // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
             var msg = $"Cannot find intent ERROR";
             //Identify first query
-            switch (intentName)
+            switch (intentName.Replace('_', ' '))
             {
                 case IntentNames.Application:
                     msg = $"You must complete and submit the wharf allowance application form. It is your responsibility to apply for wharf allowance if you believe you are entitled to it. " +

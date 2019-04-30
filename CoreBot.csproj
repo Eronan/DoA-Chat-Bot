@@ -13,6 +13,10 @@
     <PackageReference Include="Microsoft.Recognizers.Text.DataTypes.TimexExpression" Version="1.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
+
   <Import Project="PostDeployScripts\IncludeSources.targets" Condition="Exists('PostDeployScripts\IncludeSources.targets')" />
   <Import Project="..\PostDeployScripts\IncludeSources.targets" Condition="Exists('..\PostDeployScripts\IncludeSources.targets')" />
 
