@@ -33,6 +33,11 @@ namespace Microsoft.BotBuilderSamples
                     await turnContext.SendActivityAsync(response, cancellationToken);
                 }
             }
+
+            //Run the MainDialog
+            base._logger.LogInformation("Running dialog with Message Activity.");
+
+            await base._dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>("DialogState"), cancellationToken);
         }
 
         // Create an attachment message response.
