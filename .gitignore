@@ -1,6 +1,6 @@
 *.dll
 *.pdb
-.vs/
+.vs/*
 obj/**
 bin/**
 runtimes/**
